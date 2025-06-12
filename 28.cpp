@@ -18,7 +18,7 @@ int main() {
     cin >> nombreBuscado;
 
     // Buscar en el arreglo
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < size; i++) {
         if (alumnos[i] == nombreBuscado) {
             encontrado = true;
             break; // Si lo encuentra, sale del ciclo
