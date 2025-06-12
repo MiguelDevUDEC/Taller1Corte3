@@ -5,23 +5,47 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    int m[3][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
-
-    for (int j = 0; j < 3; j++) {
-        int temp = m[0][j];
-        m[0][j] = m[2][j];
-        m[2][j] = temp;
-    }
-
-    cout << "7.25 -> Matriz con primera y tercera fila intercambiadas:\n";
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) cout << m[i][j] << " ";
+int main (){
+	
+	float media,suma;
+    int matriz[30][5];
+	int cantidad[30];
+	
+	for(int i=0;i<30;i++){
+		
+		cout<<endl<<"Estudiante #"<<i+1<<endl;
+		
+		cout<<endl<<"ingrese la cantidad de notas que tiene (minimo 2 maximo 5 ): ";
+		cin>>cantidad[i];
+		
+        while (cantidad[i]<2||cantidad[i]>5) {
+        	
+            cout<<endl<<"Cantidad invalida. Intente nuevamente: ";
+            cin>>cantidad[i];}
+			suma=0;
+			
+			
+		for (int j=0;j<cantidad[i];j++){
+			
+			cout<<endl<<"ingrese las notas que tiene en la asignatura "<<j + 1 << ": ";
+			cin>>matriz[i][j];
+			suma+=matriz[i][j];
+			
+		}
+		
+		cout<<endl<< "Notas del estudiante #" << i + 1 << ": "<<endl;
+		
+        for (int j=0;j<cantidad[i];j++) {
+            cout<<endl<<"* "<< matriz[i][j]<<endl;
+        }
         cout << endl;
-    }
-    return 0;
+		
+		media=suma/cantidad[i];
+		cout<<"la media del alumno #"<<i + 1<< " es : "<<media<<endl;
+}
+
+	return 0;
+
+
+
 }
