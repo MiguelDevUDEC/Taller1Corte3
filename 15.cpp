@@ -3,16 +3,24 @@
 //
 
 #include <iostream>
-using namespace std;
+using namespace std ;
 
-int main() {
-    int A[] = {1, 2, 3}, B[] = {4, 5, 6};
-    int producto = 0;
-
-    for (int i = 0; i < 3; i++) {
-        producto += A[i] * B[i];
-    }
-
-    cout << "7.15 -> Producto escalar: " << producto << endl;
-    return 0;
-}
+int main (){
+	
+ 	float arreglo[10],media=0,numero,suma=0;
+ 
+	for (int i = 0 ; i < 10 ; i++){
+ 		
+ 		cout<<"Ingrese el  #" <<i+1<<" elemento de la lista: ";
+ 		cin>>arreglo[i]; 
+ 		suma +=arreglo[i];		//se suman los datos ingresados	 
+	}
+	
+	cout<<"la suma de todos los elementos es "<<suma<<endl;		
+	
+	media=suma/ 10;  //y se calcula el promedio
+	
+	cout<<"La media aritmetica es: "<<media<<endl;
+	
+ 	return 0;
+ }
