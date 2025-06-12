@@ -4,52 +4,46 @@
 
 //LIBRERIAS
 #include <iostream>
-#include <cmath>
-
-//ESPACIO DE TRABAJO STANDARD
+#include<stdlib.h>
 using namespace std;
+
 int main() {
-  int size = 0;
-  cout<<"Ingrese el numero de elementos del arreglo: ";
-  cin>>size;
-    float numeros[size];
+    int MAX = 100;
+    double valores[MAX];
     int cantidad = 0;
-    float numero, suma = 0, media;
+    double entrada;
 
-    // LEER DATOS
-    cout << "Introduce los valores (-99 para finalizar): ";
+    
 
-    while (true || cantidad < size) {
-        cout << "Numero #" << (cantidad + 1) << ": ";
-        cin >> numero;
-
+    while (cantidad < MAX) {
+    	system("cls");
+    	cout << "   Ingrese valores numericos (finalice con -99)";
+    	cout<<endl<<"Ingrese el valor #"<<cantidad+1<<": ";
+        cin >> entrada;
+        if (entrada == -99) break;
+        valores[cantidad] = entrada;
         cantidad++;
-        if (numero == -99 || cantidad == size) {
-            break;
-        }
-
-        numeros[cantidad] = numero;
-        suma += numero;
     }
 
     if (cantidad == 0) {
-        cout << "No se ingresaron valores validos." << endl;
+    	system("cls");
+        cout << "No se ingresaron valores." << endl;
         return 0;
     }
 
-    // CALCULAR MEDIA
-    media = suma / cantidad;
+    double suma = 0;
+    for (int i = 0; i < cantidad; i++) {
+        suma += valores[i];
+    }
+    double media = suma / cantidad;
+	system("cls");
+    cout << "\nCantidad de valores leidos: " << cantidad << endl;
+    cout << "Suma: " << suma << endl;
+    cout << "Media: " << media << endl;
 
-    // RESULTADOS
-    cout << "Cantidad de valores leidos: " << cantidad << endl;
-    cout << "Suma de los valores: " << suma << endl;
-    cout << "Media de los valores: " << media << endl;
-
-    // MOSTRAR TABLA DE DESVIACIONES
     cout << "\nValor\tDesviacion respecto a la media\n";
     for (int i = 0; i < cantidad; i++) {
-        float desviacion = numeros[i] - media;
-        cout << numeros[i] << "\t" << desviacion << endl;
+        cout << valores[i] << "\t" << (valores[i] - media) << endl;
     }
 
     return 0;
