@@ -6,8 +6,6 @@
 #include <iostream>
 #include <cmath>
 
-//ESPACIO DE TRABAJO STANDARD
-#include <iostream>
 using namespace std;
 int main (){
     int plazas[300]={0};
@@ -105,5 +103,4 @@ int main (){
     }
 
     return 0;
-}
 }

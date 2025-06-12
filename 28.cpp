@@ -2,10 +2,14 @@
 // Created by Miguel on 11/06/2025.
 //
 
+#include <iostream>
+#include <string>
+
 using namespace std;
 int main() {
-   	int N = 5;
-    string alumnos[N] = {"Ana", "Carlos", "Luis", "Maria", "Pedro"};
+   	int size;
+    size = 5;
+    string alumnos[size] =  {"Ana", "Carlos", "Luis", "Maria", "Pedro"};
     string nombreBuscado;
     bool encontrado = false;
 

@@ -42,8 +42,3 @@ int main() {
     return 0;
 }
 
-    cout << "\nElementos positivos: " << positivos << endl;
-    cout << "Elementos negativos: " << negativos << endl;
-
-    return 0;
-}
