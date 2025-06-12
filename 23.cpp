@@ -87,8 +87,8 @@ int main() {
                 option2 = 0, plazaCancelar = 0;
                 //system("cls");
                 cout << "**************************" << endl;
-                cout << "1. Cancelar Reserva asiento No fumadores";
-                cout << "2. Cancelar Reserva asiento Fumadores";
+                cout << "1. Cancelar Reserva asiento No fumadores" << endl;
+                cout << "2. Cancelar Reserva asiento Fumadores" << endl;
                 cin >> option2;
                 if (option2 == 1 && noFumadores > 0) {
                     //system("cls");
