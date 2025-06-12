@@ -3,21 +3,25 @@
 //
 
 #include <iostream>
+#include<stdlib.h>
 using namespace std;
 
 int main() {
-    int tabla[3][4];
+	int n=3,m=4;
+    int tabla[n][m];
 
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            cout << "Elemento [" << i << "][" << j << "]: ";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+        	system("cls");
+        	cout<<"Ingresar valores de la tabla "<<n<<"x"<<m<<endl;
+            cout<<endl << "Elemento [" << i << "][" << j << "]: ";
             cin >> tabla[i][j];
         }
     }
-
+	system("cls");
     cout << "\nContenido de la tabla:\n";
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             cout << tabla[i][j] << "\t";
         }
         cout << endl;
