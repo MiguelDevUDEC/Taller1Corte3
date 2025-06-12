@@ -3,24 +3,40 @@
 //
 
 #include <iostream>
-using namespace std ;
+#include<stdlib.h>
+using namespace std;
 
-int main (){
+int main() {
+    int N;
+
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> N;
 	
- 	float arreglo[10],media=0,numero,suma=0;
- 
-	for (int i = 0 ; i < 10 ; i++){
- 		
- 		cout<<"Ingrese el  #" <<i+1<<" elemento de la lista: ";
- 		cin>>arreglo[i]; 
- 		suma +=arreglo[i];		//se suman los datos ingresados	 
+	if(N==0){
+		system("cls");
+		cout<<"La cantidad de elementos debe ser mayor a 0";
+		cout << "Ingrese la cantidad de elementos de nuevo: ";
+    	cin >> N;
 	}
 	
-	cout<<"la suma de todos los elementos es "<<suma<<endl;		
-	
-	media=suma/ 10;  //y se calcula el promedio
-	
-	cout<<"La media aritmetica es: "<<media<<endl;
-	
- 	return 0;
- }
+    int L[N];  
+
+    
+    for (int i = 0; i < N; i++) {
+    	system("cls");
+    	cout << "Ingrese los " << i+1 << " elementos:";
+        cin >> L[i];
+    }
+
+    int mayor = L[0];
+
+    for (int i = 1; i < N; i++) {
+        if (L[i] > mayor) {
+            mayor = L[i];  
+        }
+    }
+
+    cout << "El mayor valor es: " << mayor << endl;
+
+    return 0;
+}
