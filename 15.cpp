@@ -3,16 +3,40 @@
 //
 
 #include <iostream>
+#include<stdlib.h>
 using namespace std;
 
 int main() {
-    int A[] = {1, 2, 3}, B[] = {4, 5, 6};
-    int producto = 0;
+    int N;
 
-    for (int i = 0; i < 3; i++) {
-        producto += A[i] * B[i];
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> N;
+	
+	if(N==0){
+		system("cls");
+		cout<<"La cantidad de elementos debe ser mayor a 0";
+		cout << "Ingrese la cantidad de elementos de nuevo: ";
+    	cin >> N;
+	}
+	
+    int L[N];  
+
+    
+    for (int i = 0; i < N; i++) {
+    	system("cls");
+    	cout << "Ingrese los " << i+1 << " elementos:";
+        cin >> L[i];
     }
 
-    cout << "7.15 -> Producto escalar: " << producto << endl;
+    int mayor = L[0];
+
+    for (int i = 1; i < N; i++) {
+        if (L[i] > mayor) {
+            mayor = L[i];  
+        }
+    }
+
+    cout << "El mayor valor es: " << mayor << endl;
+
     return 0;
 }

@@ -3,16 +3,19 @@
 //
 
 #include <iostream>
+#include<stdlib.h>
 using namespace std;
 
 int main() {
-    const int TOTAL_NUMEROS = 100;
+    const int TOTAL_NUMEROS = 10;
     int numeros[TOTAL_NUMEROS];
 
-    cout << "=== BUSCAR VALOR MAXIMO ===" << endl;
-    cout << "Ingrese " << TOTAL_NUMEROS << " numeros enteros:" << endl;
 
     for (int i = 0; i < TOTAL_NUMEROS; i++) {
+    	
+    	system("cls");
+    	cout << "=== BUSCAR VALOR MAXIMO ===" << endl;
+    	cout << "Ingrese " << TOTAL_NUMEROS << " numeros enteros:" << endl;
         cout << "Numero " << (i + 1) << ": ";
         cin >> numeros[i];
     }
@@ -26,7 +29,7 @@ int main() {
             posicion = i;
         }
     }
-
+	system("cls");
     cout << endl << "=== RESULTADO ===" << endl;
     cout << "Valor maximo: " << maximo << endl;
     cout << "Posicion en la tabla: " << (posicion + 1) << endl;

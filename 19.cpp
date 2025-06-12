@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 int main() {
@@ -12,10 +13,11 @@ int main() {
     cout << "Numero de columnas: ";
     cin >> m;
 
-    int tabla[50][50];
+    int tabla[n][m];
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
+        	system("cls");
             cout << "Elemento [" << i << "][" << j << "]: ";
             cin >> tabla[i][j];
         }
@@ -33,6 +35,12 @@ int main() {
             }
         }
     }
+	system("cls");
+    cout << "\nElementos positivos: " << positivos << endl;
+    cout << "Elementos negativos: " << negativos << endl;
+
+    return 0;
+}
 
     cout << "\nElementos positivos: " << positivos << endl;
     cout << "Elementos negativos: " << negativos << endl;

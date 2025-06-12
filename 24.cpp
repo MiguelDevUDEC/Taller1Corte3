@@ -3,23 +3,24 @@
 //
 
 #include <iostream>
+#include<stdlib.h>
 using namespace std;
 
 int main() {
     int numAlumnos;
 
     cout << "=== ANALISIS DE ESTATURAS DE CLASE ===" << endl;
-    cout << "Cuantos alumnos hay en la clase ";
+    cout << "Cuantos alumnos hay en la clase: ";
     cin >> numAlumnos;
 
     double estaturas[numAlumnos];
     double sumaEstaturas = 0;
 
-    cout << "\nIngrese las estaturas (en metros):" << endl;
 
     // estaturas y calcular suma
     for (int i = 0; i < numAlumnos; i++) {
-        cout << "Alumno " << (i + 1) << ": ";
+    	cout << "\nIngrese las estaturas (en metros): " << endl;
+	    cout << "Alumno " << (i + 1) << ": ";
         cin >> estaturas[i];
         sumaEstaturas += estaturas[i];
     }
@@ -41,7 +42,7 @@ int main() {
             iguales++;
         }
     }
-
+	system("cls");
     cout << "\n=== RESULTADOS ===" << endl;
     cout << "Media de estaturas: " << mediaEstatura << " metros" << endl;
     cout << "Alumnos mas altos que la media: " << masAltos << endl;
