@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    const int TOTAL_NUMEROS = 10;
+    const int TOTAL_NUMEROS = 100;
     int numeros[TOTAL_NUMEROS];
 
 
