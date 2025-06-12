@@ -5,7 +5,7 @@
 /*
 Leer una matriz de 3 por 3 elementos y calcular la suma de cada una de sus filas y columnas, dejando dichos resultados en dos vectores, uno de la suma de las filas y otro de las columnas.
     1. Crea una matrix 3X3
-    2. Pregunta al usuario si quiere ingresar los numeros o los quiere random
+    2. Pregunta al usuario si quiere ingresar los numeros
     3. Suma las filas y  dejar la suma en un array
     4. Suma columnas y dejar la suma en vector
  */

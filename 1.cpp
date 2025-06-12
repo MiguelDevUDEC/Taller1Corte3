@@ -17,9 +17,27 @@
 
 #include <iostream>
 
+//ESPACIO DE TRABAJO STANDARD
+using namespace std;
 int main(){
+    int i, j;
+    int a[11];
+    i = 1;
+    j = 2;
 
-  return 0;
+    a[i] = j;
+    a[j] = i;
+    a[j+i] = i + j;
 
-  }
+    i = a[i] + a[j];
+    a[3] = 5;
+
+    j= a[i] - a[j];
+
+    cout << "El valor final de I es: " << i << endl;
+    cout << "El valor final de J es: " << j << endl;
+
+
+    	return 0;
+}
 

@@ -9,7 +9,7 @@
 //ESPACIO DE TRABAJO STANDARD
 using namespace std;
 int main() {
-    const int TAM = 10;
+     int TAM = 10;
     int vector[TAM];
     int suma = 0;
     float media;

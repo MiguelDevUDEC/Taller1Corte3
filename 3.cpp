@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <time.h>
+#include <cstdlib>
 using namespace std;
 
 int main(){
@@ -18,7 +19,7 @@ int main(){
 
     cout<<
           "1. Enter for yourself the values."
-       << endl << "2. Generate random numbers in the range 1 to 16, with 16 elements" << endl;
+       << endl << "2. Generate random numbers in the range 0 to 16, with 16 elements" << endl;
     cin>>option;
 
     switch(option){

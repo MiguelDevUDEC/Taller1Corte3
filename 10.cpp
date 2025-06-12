@@ -23,7 +23,7 @@ int main() {
         cout << "a. Realizar reserva en zona de fumadores\n";
         cout << "b. Realizar reserva en zona de no fumadores\n";
         cout << "c. Anular una reserva\n";
-        cout << "s. Salir del sistema\n";
+        cout << "s. Despegar el avion\n";
         cout << "=============================================\n";
         cout << "Opcion: ";
         cin >> opcion;
@@ -58,7 +58,7 @@ int main() {
                 cout << "No hay reservas para anular en esa zona.\n";
             }
         } else if (opcion == 's') {
-            cout << "Saliendo del sistema...\n";
+            cout << "El avion va a despegar no se pueden aceptar mas personas...\n";
             break;
         } else {
             cout << "Opcion invalida. Intenta de nuevo.\n";

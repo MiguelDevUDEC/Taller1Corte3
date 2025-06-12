@@ -6,8 +6,8 @@
     Una tabla y ver cuantos numeros son negativos y cuales
     1. Preguntar cuantos numeros
     2. Se le pasa la longitud del array y los valores
-	3. por cada valor se verifica si es menor que 0 y si es así se cuenta
-	4. mostrar cuantos valores son negativos y cuales son
+	3. por cada valor se verifica si es mayor que 0 y si es así se cuenta
+	4. mostrar cuantos valores son positivos y cuales son
  */
 
 #include <iostream>
@@ -21,11 +21,11 @@ int main(){
   for(int i=0;i<size;i++){
     cout<<"Enter element "<<i+1<<": ";
     cin>>arr[i];
-    if(arr[i]<0){
+    if(arr[i]>0){
       count++;
-      cout<< endl << "Element is negative "<<arr[i]<<endl;
+      cout<< endl << "Element is positive "<<arr[i]<<endl;
     }
   }
-  cout<<endl<<"The number of negative elements in the table is: "<<count;
+  cout<<endl<<"The number of positivos elements in the table is: "<<count;
   return 0;
   }
