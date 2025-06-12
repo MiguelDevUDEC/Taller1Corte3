@@ -3,53 +3,40 @@
 //
 
 #include <iostream>
-#include <vector>
 using namespace std;
 
 int main() {
-    const int NUM_ALUMNOS = 40;
-    vector<double> mediasAlumnos(NUM_ALUMNOS);
-    double sumaClase = 0.0;
+	
+	int alu=40;
+    float sumasalon = 0;
+    float notas[alu][alu];         
+	int  cantidad[alu];
 
-    cout << "=== CALCULO DE MEDIAS ===" << endl;
-    cout << "Ingrese las notas de cada alumno (termine con -1)" << endl << endl;
-
-    for (int i = 0; i < NUM_ALUMNOS; i++) {
-        cout << "Alumno " << (i + 1) << ":" << endl;
-
-        double nota, sumaAlumno = 0.0;
-        int contadorNotas = 0;
-
-        cout << "Ingrese notas (termine con -1): ";
-
-        // lee notas
-        while (cin >> nota && nota != -1) {
-            sumaAlumno += nota;
-            contadorNotas++;
+    
+    for (int i=0;i<alu;i++) {
+    	
+        float sumaindv=0; 
+		    
+	    cout<<endl<<"Ingrese la cantidad de notas que tiene en la asignatura: ";
+	    cin>>cantidad[i];
+        cout<<endl<<"estudiante "<<i+1<<":"<<endl;
+        
+        for (int j=0;j<cantidad[i];j++) {
+            cout<<endl<<"Ingrese la nota "<<j+1<<": ";
+            cin>>notas[i][j];
+            sumaindv+=notas[i][j];
         }
 
-        // calcular media
-        if (contadorNotas > 0) {
-            mediasAlumnos[i] = sumaAlumno / contadorNotas;
-            sumaClase += mediasAlumnos[i];
-            cout << "Media del alumno " << (i + 1) << ": " << mediasAlumnos[i] << endl;
-        } else {
-            mediasAlumnos[i] = 0.0;
-            cout << "No se ingresaron notas para el alumno " << (i + 1) << endl;
-        }
-        cout << endl;
+        float mediaindv=sumaindv/cantidad[i];
+        
+        cout<<endl<<"La media del estudiante es: "<<mediaindv<<endl;
+
+        sumasalon+=mediaindv;  
     }
 
-    // mostrar media
-    double mediaClase = sumaClase / NUM_ALUMNOS;
-
-    cout << "=== RESULTADOS ===" << endl;
-    cout << "Media de la clase: " << mediaClase << endl << endl;
-
-    cout << "Resumen por alumno:" << endl;
-    for (int i = 0; i < NUM_ALUMNOS; i++) {
-        cout << "Alumno " << (i + 1) << ": " << mediasAlumnos[i] << endl;
-    }
+    float mediagrupal=sumasalon/alu;
+    
+    cout<<endl<<"La media de la clase es: "<<mediagrupal<<endl;
 
     return 0;
 }
