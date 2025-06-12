@@ -2,108 +2,154 @@
 // Created by Miguel on 11/06/2025.
 //
 
+/*
+ 1. Crear un array de 181 elementos del tipo bool
+ 2. menu de despegue, agregar asientos, eliminar
+ 3. Lista de espera
+ */
+
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 using namespace std;
 
 int main() {
-    const int TOTAL_PLAZAS = 180;
-    const int PLAZAS_NO_FUMADOR = 60;
-    const int PLAZAS_FUMADOR = 120;
+    int PLAZAS_DISPONIBLES = 180;
+    int noFumadores = 1;
+    int fumadores = 61;
+    int plazaCancelar = 0;
+    double timeRestante = 1;
+    int option = 0, option2 = 0;
+    bool plazas[181] = {false};
 
-    bool plazas[TOTAL_PLAZAS + 1] = {false};
-    int reservasNoFumador = 0;
-    int reservasFumador = 0;
-
-    cout << "=== SISTEMA DE RESERVAS DE AVION ===" << endl;
-    cout << "Plazas disponibles:" << endl;
-    cout << "- No fumador: 1 a 60 (" << PLAZAS_NO_FUMADOR << " plazas)" << endl;
-    cout << "- Fumador: 61 a 180 (" << PLAZAS_FUMADOR << " plazas)" << endl;
-    cout << "Comandos: 'reservar', 'estado', 'cerrar', 'salir'" << endl << endl;
-
-    string comando;
-    bool sistemaAbierto = true;
-
-    while (sistemaAbierto) {
-        cout << "Ingrese comando: ";
-        cin >> comando;
-
-        if (comando == "reservar") {
-            char tipoSeccion;
-            cout << "Seccion (n=no fumador, f=fumador): ";
-            cin >> tipoSeccion;
-
-            if (tipoSeccion == 'n' || tipoSeccion == 'N') {
-                int plazaAsignada = 0;
-                for (int i = 1; i <= 60; i++) {
-                    if (!plazas[i]) {
-                        plazas[i] = true;
-                        plazaAsignada = i;
-                        reservasNoFumador++;
-                        break;
+    while (PLAZAS_DISPONIBLES > 0 && timeRestante > .5) {
+        cout << "**************************" << endl;
+        cout << "1. Reservar asiento" << endl;
+        cout << "2. Cancelar una reserva por asiento" << endl;
+        cout << "3. Abrir lista de espera" << endl;
+        cin >> option;
+        switch (option) {
+            case 1:
+                option2 = 0;
+                //system("cls");
+                cout << "**************************" << endl;
+                cout << "1. Reservar asiento No fumadores" << endl;
+                cout << "2. Reservar asiento Fumadores" << endl;
+                cin >> option2;
+                if (option2 == 1 && noFumadores <= 60) {
+                    //system("cls");
+                    cout << "**************************" << endl;
+                    if (plazas[noFumadores] == true) {
+                        for (int i = 1; i <= 60; i++) {
+                            if (plazas[i] == false) {
+                                cout << "Plaza reservada en asiento no fumadores, # " << i << endl;
+                                plazas[i] = true;
+                                break;
+                            }
+                        }
+                    } else {
+                        cout << "Plaza reservada en asiento no fumadores, # " << noFumadores << endl;
+                        plazas[noFumadores] = true;
                     }
-                }
-
-                if (plazaAsignada > 0) {
-                    cout << "Plaza asignada: " << plazaAsignada << " (No fumador)" << endl;
-                } else {
-                    cout << "No hay plazas disponibles en seccion no fumador" << endl;
-                }
-
-            } else if (tipoSeccion == 'f' || tipoSeccion == 'F') {
-
-                int plazaAsignada = 0;
-                for (int i = 61; i <= 180; i++) {
-                    if (!plazas[i]) {
-                        plazas[i] = true;
-                        plazaAsignada = i;
-                        reservasFumador++;
-                        break;
+                    noFumadores++;
+                    cout << "Cuantas horas faltan para el despegue del avion (1 hora = 1, 1/2 hora = 0.5): ";
+                    cin >> timeRestante;
+                } else if (option2 == 2 && fumadores <= 180) {
+                    //system("cls");
+                    cout << "**************************" << endl;
+                    if (plazas[fumadores] == true) {
+                        for (int i = 61; i <= 180; i++) {
+                            if (plazas[i] == false) {
+                                cout << "Plaza reservada en asiento fumadores, # " << i << endl;
+                                plazas[i] = true;
+                                break;
+                            }
+                        }
+                    } else {
+                        cout << "Plaza reservada en asiento  fumadores, # " << fumadores << endl;
+                        plazas[fumadores] = true;
                     }
-                }
 
-                if (plazaAsignada > 0) {
-                    cout << "Plaza asignada: " << plazaAsignada << " (Fumador)" << endl;
+                    fumadores++;
+                    cout << "Cuantas horas faltan para el despegue del avion (1 hora = 1, 1/2 hora = 0.5): ";
+                    cin >> timeRestante;
+                } else if (option2 <= 3) {
+                    //system("cls");
+                    cout << "**************************" << endl;
+                    cout << "Opcion fuera del limite de opciones";
                 } else {
-                    cout << "No hay plazas disponibles en seccion fumador" << endl;
+                    //system("cls");
+                    cout << "**************************" << endl;
+                    cout << "Limite de plazas donde quieres reservar alcanzado" << endl;
                 }
-            } else {
-                cout << "Seccion invalida. Use 'n' para no fumador o 'f' para fumador" << endl;
-            }
+                break;
+            case 2:
+                option2 = 0, plazaCancelar = 0;
+                //system("cls");
+                cout << "**************************" << endl;
+                cout << "1. Cancelar Reserva asiento No fumadores";
+                cout << "2. Cancelar Reserva asiento Fumadores";
+                cin >> option2;
+                if (option2 == 1 && noFumadores > 0) {
+                    //system("cls");
+                    cout << "**************************" << endl;
+                    cout << "Ingrese el numero del asiento que desea cancelar: ";
+                    cin >> plazaCancelar;
+                    if (plazas[plazaCancelar] == true && plazaCancelar <= 60) {
+                        //system("cls");
+                        plazas[plazaCancelar] = false;
+                        cout << "**************************" << endl;
+                        noFumadores--;
+                        cout << "Asiento " << plazaCancelar << " Cancelado con exito, ahora esta libre " << endl;
+                        cout << "Cuantas horas faltan para el despegue del avion (1 hora = 1, 1/2 hora = 0.5): ";
+                        cin >> timeRestante;
+                    } else {
+                        //system("cls");
+                        cout << "**************************" << endl;
+                        cout << "No puede cancelar esta reserva" << endl;
+                    }
+                } else if (option2 == 2 && fumadores > 61) {
+                    //system("cls");
+                    cout << "**************************" << endl;
+                    cout << "Ingrese el numero del asiento que desea cancelar: " << endl;
+                    cin >> plazaCancelar;
+                    if (plazas[plazaCancelar] == true && (plazaCancelar >= 61 && plazaCancelar <= 180)) {
+                        //system("cls");
+                        plazas[plazaCancelar] = false;
+                        cout << "**************************" << endl;
+                        fumadores--;
+                        cout << "Asiento " << plazaCancelar << " Cancelado con exito, ahora esta libre " << endl;
+                        cout << "Cuantas horas faltan para el despegue del avion (1 hora = 1, 1/2 hora = 0.5): ";
+                        cin >> timeRestante;
+                    } else {
+                        //system("cls");
+                        cout << "**************************" << endl;
+                        cout << "No puede cancelar esta reserva" << endl;
+                    }
+                } else {
+                    //system("cls");
+                    cout << "**************************" << endl;
+                    cout << "Opcion invalida" << endl;
+                }
+                break;
 
-        } else if (comando == "estado") {
-            cout << "\n=== ESTADO ACTUAL ===" << endl;
-            cout << "No fumador: " << reservasNoFumador << "/" << PLAZAS_NO_FUMADOR << " ocupadas" << endl;
-            cout << "Fumador: " << reservasFumador << "/" << PLAZAS_FUMADOR << " ocupadas" << endl;
-            cout << "Total: " << (reservasNoFumador + reservasFumador) << "/" << TOTAL_PLAZAS << " ocupadas" << endl;
-            cout << "Plazas disponibles: " << (TOTAL_PLAZAS - reservasNoFumador - reservasFumador) << endl << endl;
-
-        } else if (comando == "cerrar") {
-            cout << "\n=== CERRANDO RESERVAS ===" << endl;
-            cout << "El sistema se cierra 30 minutos antes de la salida." << endl;
-            cout << "Se abre la lista de espera para plazas no confirmadas." << endl;
-            sistemaAbierto = false;
-
-        } else if (comando == "salir") {
-            sistemaAbierto = false;
-
-        } else {
-            cout << "Comando no reconocido. Use: reservar, estado, cerrar, salir" << endl;
-        }
-
-
-        if (reservasNoFumador + reservasFumador == TOTAL_PLAZAS) {
-            cout << "\n¡el avion esta completo! Todas las plazas han sido reservadas." << endl;
-            cout << "Se abre automaticamente la lista de espera." << endl;
-            sistemaAbierto = false;
+            case 3:
+                timeRestante = 0;
+                //system("cls");
+                cout << "**************************" << endl;
+                cout << "Cuantas horas faltan para el despegue del avion (1 hora = 1, 1/2 hora = 0.5): ";
+                cin >> timeRestante;
+                break;
         }
     }
 
-    cout << "\n=== RESUMEN FINAL ===" << endl;
-    cout << "Reservas finalizadas:" << endl;
-    cout << "- No fumador: " << reservasNoFumador << "/" << PLAZAS_NO_FUMADOR << endl;
-    cout << "- Fumador: " << reservasFumador << "/" << PLAZAS_FUMADOR << endl;
-    cout << "- Total: " << (reservasNoFumador + reservasFumador) << "/" << TOTAL_PLAZAS << endl;
+    cout<< "El avion paso a la fase de espera, acontinuacion se informaran los asientos que estan en lista de espera" << endl;
+    for (int i = 1; i <= 180; i++) {
+        if (plazas[i] == true) {
+            cout << "La plaza # "<< i << " Esta en lista de espera" << endl;
+        }
+    }
+
 
     return 0;
 }
