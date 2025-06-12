@@ -3,21 +3,24 @@
 //
 
 #include <iostream>
+#include<stdlib.h>
 using namespace std;
 
 int main() {
     int N = 100;
-    int vector[100];
+    int vector[N];
     int suma = 0;
 
-    cout << "Ingrese 100 numeros enteros:\n";
+    
     for (int i = 0; i < N; ++i) {
+    	system("cls");
+    	cout << "Ingrese "<<i+1<<" numeros enteros:";
         cin >> vector[i];
         suma += vector[i];
     }
 
     double media = static_cast<double>(suma) / N;
-
+	system("cls");
     cout << "Los valores almacenados son:\n";
     for (int i = 0; i < N; ++i) {
         cout << vector[i] << " ";
@@ -27,5 +30,5 @@ int main() {
     cout << "Suma total: " << suma << endl;
     cout << "Media aritmética: " << media << endl;
 
-    return 0;
+	return 0;
 }
