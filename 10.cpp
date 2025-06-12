@@ -7,74 +7,103 @@
 #include <cmath>
 
 //ESPACIO DE TRABAJO STANDARD
+#include <iostream>
 using namespace std;
-int main() {
-    int fumadores = 0;
-    int noFumadores = 0;
-    char opcion;
-    char confirmar;
-    const int MAX_FUMADORES = 100;
-    const int MAX_NOFUMADORES = 200;
+int main (){
+    int plazas[300]={0};
+    int opcion;
+    int despegue=0;
+    while (despegue == 0) {
+        cout<<"----MENU DE RESERVAS----"<<endl;
+        cout<<"1)Reservar plaza"<<endl;
+        cout<<"2) Cancelar reserva"<<endl;
+        cout<<"3) Ver estado de plazas"<<endl;
+        cout<<"4) Despegar (cerrar reservas)"<<endl;
+        cout<<"Ingrese una opcion: "<<endl;
+        cin>>opcion;
 
-    do {
-        system("cls");
+        if (opcion==1) {
+            int tipo;
+            cout<<"�Desea plaza en zona de: 1) Fumadores (1-100) o 2) No fumadores (101-300)? ";
+            cin>>tipo;
 
-        cout << "===== RESERVA DE VUELO MADRID - CARACAS =====\n";
-        cout << "a. Realizar reserva en zona de fumadores\n";
-        cout << "b. Realizar reserva en zona de no fumadores\n";
-        cout << "c. Anular una reserva\n";
-        cout << "s. Despegar el avion\n";
-        cout << "=============================================\n";
-        cout << "Opcion: ";
-        cin >> opcion;
+            int i=0;
+            int reservado=0;
 
-        system("cls");
-
-        if (opcion == 'a') {
-            if (fumadores < MAX_FUMADORES) {
-                fumadores++;
-                cout << "Reserva en fumadores confirmada. Plaza #" << fumadores << endl;
-            } else {
-                cout << "No hay plazas disponibles en fumadores.\n";
+            if (tipo==1) {
+                i=0;
+                while (i<100 && reservado==0) {
+                    if (plazas[i]==0) {
+                        plazas[i]=1;
+                        cout<<"Plaza"<<( i+ 1)<<"reservada."<<endl;
+                       reservado=1;
+                    }
+                    i++;
+                }
+            } else if (tipo==2) {
+                i=100;
+                while (i<300 && reservado==0) {
+                    if (plazas[i]==0) {
+                        plazas[i]=1;
+                        cout<<"Plaza "<<(i+1)<<"reservada."<<endl;
+                        reservado=1;
+                    }
+                    i++;
+                }
             }
-        } else if (opcion == 'b') {
-            if (noFumadores < MAX_NOFUMADORES) {
-                noFumadores++;
-                cout << "Reserva en no fumadores confirmada. Plaza #" << (noFumadores + 100) << endl;
-            } else {
-                cout << "No hay plazas disponibles en no fumadores.\n";
+
+            if (reservado==0) {
+                cout<<"No hay plazas disponibles en esa zona.";
             }
-        } else if (opcion == 'c') {
-            char tipo;
-            cout << "¿Desea anular una reserva en zona (f) fumadores o (n) no fumadores?: ";
-            cin >> tipo;
-            if (tipo == 'f' && fumadores > 0) {
-                fumadores--;
-                cout << "Reserva anulada correctamente en fumadores.\n";
-            } else if (tipo == 'n' && noFumadores > 0) {
-                noFumadores--;
-                cout << "Reserva anulada correctamente en no fumadores.\n";
+
+        } else if (opcion==2) {
+            int numero;
+            cout<<"Ingrese el numero de plaza a cancelar (1-300): ";
+            cin >> numero;
+
+            if (numero>=1 && numero<= 300) {
+                if (plazas[numero-1]==1) {
+                    plazas[numero-1]=0;
+                    cout<<"Plaza"<<numero<<"cancelada.";
+                } else {
+                    cout<<"Esa plaza no estaba reservada."<<endl;
+                }
             } else {
-                cout << "No hay reservas para anular en esa zona.\n";
+                cout<<"numero de plaza invalido."<<endl;
             }
-        } else if (opcion == 's') {
-            cout << "El avion va a despegar no se pueden aceptar mas personas...\n";
-            break;
+
+        } else if (opcion == 3) {
+            int libres = 0;
+            int i = 0;
+            while (i < 300) {
+                if (plazas[i] == 0) {
+                    libres++;
+                }
+                i++;
+            }
+            cout<<"Plazas libres: "<<libres<<endl;
+            cout<<"Plazas ocupadas: "<<(300-libres)<<endl;
+
+        } else if (opcion==4) {
+            despegue=1;
+            cout<<"El avion va a despegar. Reservas cerradas."<<endl;
         } else {
-            cout << "Opcion invalida. Intenta de nuevo.\n";
+            cout<<"Opcion invalida."<<endl;
         }
-
-        // Verificar si todas las plazas están llenas
-        if (fumadores == MAX_FUMADORES && noFumadores == MAX_NOFUMADORES) {
-            cout << "\nTodas las plazas han sido reservadas. Cerrando reservas...\n";
-            break;
+        int ocupadas=0;
+        int i=0;
+        while (i<300) {
+            if (plazas[i]==1) {
+                ocupadas++;
+            }
+            i++;
         }
-
-        // Confirmar si desea continuar
-        cout << "\nDesea volver al menu principal? (s/n): ";
-        cin >> confirmar;
-
-    } while (confirmar == 's');
+        if (ocupadas==300) {
+            cout<<"�El avion esta lleno! Reservas cerradas.";
+            despegue=1;
+        }
+    }
 
     return 0;
+}
 }

@@ -5,16 +5,23 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    int A[] = {10, 20, 30, 40, 50};
-    int B[5];
+int main(){
+    int matriz[10][10];
+    int numero=1;
 
-    for (int i = 0; i < 5; i++) {
-        B[i] = A[i];
+    for (int i=0;i<10;i++){
+        for (int j=0;j<10;j++){
+            matriz[i][j]=numero*numero;
+            numero++;
+        }
+    }
+    cout<<"Matriz de cuadrados del 1 al 100:"<<endl;
+    for (int i=0;i<10;i++){
+        for (int j=0;j<10;j++){
+            cout<<matriz[i][j]<< " ";
+        }
+        cout<<endl;
     }
 
-    cout << "7.12 -> Copia: ";
-    for (int i = 0; i < 5; i++) cout << B[i] << " ";
-    cout << endl;
     return 0;
 }

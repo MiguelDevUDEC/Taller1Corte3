@@ -9,24 +9,27 @@
 //ESPACIO DE TRABAJO STANDARD
 using namespace std;
 int main() {
-    float numeros[100];
+  int size = 0;
+  cout<<"Ingrese el numero de elementos del arreglo: ";
+  cin>>size;
+    float numeros[size];
     int cantidad = 0;
     float numero, suma = 0, media;
 
     // LEER DATOS
     cout << "Introduce los valores (-99 para finalizar): ";
 
-    while (true) {
+    while (true || cantidad < size) {
         cout << "Numero #" << (cantidad + 1) << ": ";
         cin >> numero;
 
-        if (numero == -99) {
+        cantidad++;
+        if (numero == -99 || cantidad == size) {
             break;
         }
 
         numeros[cantidad] = numero;
         suma += numero;
-        cantidad++;
     }
 
     if (cantidad == 0) {

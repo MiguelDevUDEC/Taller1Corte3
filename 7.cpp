@@ -7,29 +7,21 @@
 #include <cmath>
 
 //ESPACIO DE TRABAJO STANDARD
+
 using namespace std;
-int main() {
-    const int TAM = 4;
-    int matriz[TAM][TAM];
-    int sumaDiagonal = 0;
-
-    // Leer los datos de la matriz
-    cout << "Ingrese los elementos de una matriz 4x4:" << endl;
-    for (int i = 0; i < TAM; i++) {
-        for (int j = 0; j < TAM; j++) {
-            cout << "Elemento [" << i << "][" << j << "]: ";
-            cin >> matriz[i][j];
-
-            // Si estamos en la diagonal principal
-            if (i ==
-             j) {
-                sumaDiagonal += matriz[i][j];
-             }
-        }
+int main (){
+    int matriz[4][4];
+    int suma=0;
+    cout<<"ingrese 16 elementos"<<endl;
+    for(int i=0;i<4;i++){
+        for (int j=0;j<4;j++){
+            cout<<"elemento["<< i <<"]["<< j <<"]"<<endl;
+            cin>>matriz[i][j];}
     }
 
-    // Mostrar la suma de la diagonal principal
-    cout << "\nLa suma de los elementos de la diagonal principal es: " << sumaDiagonal << endl;
+    for(int i=0;i<4;i++){
+        suma+=matriz[i][i];
+    }
 
-    return 0;
+    cout<<" la suma total de la diagonal principal es:"<<suma<<endl;
 }

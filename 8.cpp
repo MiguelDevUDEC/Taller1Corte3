@@ -7,51 +7,29 @@
 #include <cmath>
 
 //ESPACIO DE TRABAJO STANDARD
+#include <iostream>
+#include <stdlib.h>
 using namespace std;
-int main() {
-    const int MAX = 100;
-    int vec[MAX];
-    int N, x, k;
-
-    // Leer el tamaño del vector
-    cout << "Ingrese el numero de elementos del vector: ";
-    cin >> N;
-
-    // Leer el contenido del vector original
-    cout << "Ingrese los elementos del vector:" << endl;
-    for (int i = 0; i < N; i++) {
-        cout << "Elemento " << i + 1 << ": ";
-        cin >> vec[i];
+int main (){
+    float t[50],nueva[50];
+    int k;
+    cout<<"ingrese 50 numeros reales distintos de 0:";	//numeros positivos o negativos,el numero que escoja dividira todo
+    for (int i=0;i<50;i++){
+        cin>>t[i];
+        if (t[i]==0){
+            cout<<"numero invalido."<<endl;
+        }
     }
+    cout<<"ingrese la posicion de la variable k entre (0 y 49)";  // Se pide la posicion k (entre 0 y 49) que se usara para dividir
+    cin>>k;
 
-    // Leer el valor a insertar y la posicion
-    cout << "Ingrese el valor que desea insertar: ";
-    cin >> x;
-
-    cout << "Ingrese la posicion (1 a " << N + 1 << ") en la que desea insertar: ";
-    cin >> k;
-
-    // Validar la posicion
-    if (k < 1 || k > N + 1) {
-        cout << "Posicion no valida." << endl;
-        return 0;
+    for (int j=0;j<50;j++){  // dividiendo cada elemento de t por t[k]
+        nueva[j]=t[j]/t[k]; //Cada nuevo valor es el resultado de t[j] dividido entre t[k]
     }
-
-    // Mover elementos hacia la derecha desde la posicion k-1
-    for (int i = N; i >= k; i--) {
-        vec[i] = vec[i - 1];
+    cout << "Nuevo vector:" << endl; //se imprime el nuevo vector
+    for (int i=0;i<50;i++) {
+        cout<<"nuevo["<<i<<"]="<<nueva[i]<<endl;
     }
-
-    // Insertar el valor x en la posicion deseada
-    vec[k - 1] = x;
-    N++; // aumentar el tamaño lógico del vector
-
-    // Mostrar el vector resultante
-    cout << "Vector resultante: ";
-    for (int i = 0; i < N; i++) {
-        cout << vec[i] << " ";
-    }
-    cout << endl;
 
     return 0;
 }
