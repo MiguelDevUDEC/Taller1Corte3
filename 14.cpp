@@ -6,16 +6,26 @@
 using namespace std;
 
 int main() {
-    int v[] = {1, 2, 3, 4, 5};
-    int n = 5;
-    for (int i = 0; i < n / 2; i++) {
-        int tmp = v[i];
-        v[i] = v[n - 1 - i];
-        v[n - 1 - i] = tmp;
+    int N = 100;
+    int vector[100];
+    int suma = 0;
+
+    cout << "Ingrese 100 numeros enteros:\n";
+    for (int i = 0; i < N; ++i) {
+        cin >> vector[i];
+        suma += vector[i];
     }
 
-    cout << "7.13 -> Invertido: ";
-    for (int i = 0; i < n; i++) cout << v[i] << " ";
+    double media = static_cast<double>(suma) / N;
+
+    cout << "Los valores almacenados son:\n";
+    for (int i = 0; i < N; ++i) {
+        cout << vector[i] << " ";
+    }
     cout << endl;
-    return 0;
+
+    cout << "Suma total: " << suma << endl;
+    cout << "Media aritmética: " << media << endl;
+
+    return 0;
 }
